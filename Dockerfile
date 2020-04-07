@@ -6,7 +6,7 @@ RUN CGO_ENABLED=0 \
 
 FROM alpine:3.11
 COPY --from=compile /app/app /
-ENV GIN_BIND=80\
+ENV GIN_BIND=[::]:80\
     GIN_MODE=release
 
 ENTRYPOINT ["/app"]
