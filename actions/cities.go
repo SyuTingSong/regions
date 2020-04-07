@@ -17,9 +17,9 @@ func Cities(c *gin.Context) {
 
 	var cities []string
 	if c.Param("short") == "short" {
-		cities, ok = db.ShortProvinces[province]
+		cities, ok = db.ShortCitiesInProvinces[province]
 	} else {
-		cities, ok = db.Provinces[province]
+		cities, ok = db.CitiesInProvinces[province]
 	}
 	if !ok {
 		c.AbortWithStatusJSON(http.StatusNotFound, gin.H{

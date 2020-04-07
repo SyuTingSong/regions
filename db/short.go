@@ -25,17 +25,21 @@ func InitShort() {
 	if ShortProvinces != nil {
 		return
 	}
-	ShortProvinces = make(map[string][]string)
-	for province, cities := range Provinces {
+	ShortProvinces = make([]string, len(Provinces))
+	for i := range Provinces {
+		ShortProvinces[i] = shortProvince(Provinces[i])
+	}
+	ShortCitiesInProvinces = make(map[string][]string)
+	for province, cities := range CitiesInProvinces {
 		shortCities := make([]string, len(cities))
 		for i := range cities {
 			shortCities[i] = shortCity(cities[i])
 		}
-		ShortProvinces[shortProvince(province)] = shortCities
+		ShortCitiesInProvinces[shortProvince(province)] = shortCities
 	}
 
-	ShortCities = make(map[string][]string)
-	for city, districts := range Cities {
-		ShortCities[shortCity(city)] = districts
+	ShortDistrictInCities = make(map[string][]string)
+	for city, districts := range DistrictsInCities {
+		ShortDistrictInCities[shortCity(city)] = districts
 	}
 }

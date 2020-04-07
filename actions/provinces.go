@@ -7,15 +7,9 @@ import (
 )
 
 func Provinces(c *gin.Context) {
-	var pMap map[string][]string
 	if c.Param("short") == "short" {
-		pMap = db.ShortProvinces
+		c.JSON(http.StatusOK, db.ShortProvinces)
 	} else {
-		pMap = db.Provinces
+		c.JSON(http.StatusOK, db.Provinces)
 	}
-	var provinces []string
-	for province := range pMap {
-		provinces = append(provinces, province)
-	}
-	c.JSON(http.StatusOK, provinces)
 }
