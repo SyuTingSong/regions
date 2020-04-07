@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "build": "node --experimental-modules convert.js > district3.go"
+    },
+    "type": "module"
+}
